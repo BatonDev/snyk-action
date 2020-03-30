@@ -10,6 +10,8 @@ inputs:
 runs:
   using: "docker"
   image: "docker://derekoverby/snyk-maven:latest"
+  env:
+    COMMAND: "mvn dependency:tree -DoutputType=dot --file=pom.xml --no-transfer-progress"
   args:
   - snyk
   - ${{ inputs.command }}

@@ -1,0 +1,16 @@
+name: "Snyk Maven"
+description: "Check your Maven application for vulnerabilties using Snyk"
+author: "Derek Overby"
+inputs:
+  command:
+    description: "Which Snyk command to run, defaults to test"
+    default: test
+  args:
+    description: "Additional arguments to pass to Snyk"
+runs:
+  using: "docker"
+  image: "docker://derekoverby/snyk-maven:latest"
+  args:
+  - snyk
+  - ${{ inputs.command }}
+  - ${{ inputs.args }}
